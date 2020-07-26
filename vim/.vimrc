@@ -10,6 +10,7 @@ call plug#begin()
 "Plug 'google/vim-glaive'
 
 Plug 'junegunn/vim-easy-align'
+Plug 'dpc/vim-smarttabs'
 "
 "" Aesthetic
 Plug 'morhetz/gruvbox'
@@ -156,6 +157,8 @@ let g:syntastic_python_checkers = ['flake8', 'pylint']
 "let g:syntastic_python_checkers = ['pylint', 'flake8']
 "let g:syntastic_aggregate_errors = 1
 "let g:syntastic_auto_loc_list = 1
+let g:syntastic_filetype_map = {
+    \ "systemverilog": "verilog"}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " coc
@@ -342,3 +345,17 @@ let g:tex_fast = "bMpr"
 "set conceallevel=1
 "let g:tex_conceal='abdmg'
 let g:tex_conceal=""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Retab
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Retab spaced file, but only indentation
+command! RetabIndents call RetabIndents()
+
+" Retab spaced file, but only indentation
+func! RetabIndents()
+		let saved_view = winsaveview()
+		execute '%s@^\( \{'.&ts.'}\)\+@\=repeat("\t",len(submatch(0))/'.&ts.')@'
+		call winrestview(saved_view)
+endfunc
