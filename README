@@ -1,0 +1,2 @@
+- vim-coc requires nodejs
+- use gnu stow to symlink
