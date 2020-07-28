@@ -54,7 +54,7 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 filetype plugin indent on
-set expandtab
+set noexpandtab
 set autoindent
 set tabstop=2
 set softtabstop=2
@@ -163,7 +163,7 @@ let g:syntastic_filetype_map = {
 """"""""""""""""""""""""""""""""""""""""""""""""""
 " coc
 """"""""""""""""""""""""""""""""""""""""""""""""""
-
+let g:coc_disable_startup_warning = 1
 if has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
